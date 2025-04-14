@@ -2,6 +2,8 @@ package com.technical_test.task_management_sy.models;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,15 +29,18 @@ public class Task {
     @Column(nullable = true, unique = true)
     private String caseNumber;
 
+    @NotBlank (message = "Title is required")
     @Column(nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @NotBlank(message = "Status is required")
     @Column(nullable = false)
     private String status;
 
+    @NotNull(message = "Due date/time is required")
     @Column(name = "due_date_time")
     private LocalDateTime dueDateTime;
 
