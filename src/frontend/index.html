@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f5f6fa] text-gray-800 font-sans">
+
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg p-6 rounded-r-2xl">
+        <h2 class="text-xl font-bold mb-6">taskia</h2>
+        <nav class="space-y-4 text-sm">
+            <a href="#" class="block font-semibold text-indigo-600">Manage Task</a>
+            <a href="#">Overview</a>
+            <a href="#">My People</a>
+            <a href="#">Settings</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Manage Task</h1>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700">Add New Task</button>
+        </div>
+
+        <!-- Sorting -->
+        <div class="flex justify-end mb-4">
+            <label class="mr-2 font-medium">Sort by:</label>
+            <select class="border rounded-md px-3 py-1">
+                <option>Title (A-Z)</option>
+                <option>Title (Z-A)</option>
+                <option>Due Date ↑</option>
+                <option>Due Date ↓</option>
+            </select>
+        </div>
+
+        <!-- Task Card -->
+        <div class="bg-white shadow-md p-4 rounded-xl flex justify-between items-center mb-4">
+            <div>
+                <h3 class="text-lg font-semibold">Install Figma on Windows Server</h3>
+                <p class="text-sm text-gray-500">Created on 22 August 2024 by Julieneta</p>
+                <div class="mt-2 flex space-x-3 text-sm">
+                    <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full">High</span>
+                    <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">In Progress</span>
+                    <span class="text-gray-500">Due: 24 May 2024</span>
+                </div>
+            </div>
+            <button class="text-red-500 hover:text-red-700 text-sm font-medium">Delete</button>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
