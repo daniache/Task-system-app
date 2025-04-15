@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Task</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'GDS Transport', Arial, sans-serif;
+    }
+    .govuk-blue-bar {
+      background: #1d70b8;
+      height: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Modal Wrapper -->
+<div class="max-w-lg mx-auto mt-10 shadow border border-gray-300 rounded-lg overflow-hidden">
+
+  <!-- Header -->
+  <header class="bg-[#0b0c0c] text-white px-6 py-4">
+    <h1 class="text-xl font-bold">ADD NEW TASK</h1>
+  </header>
+
+  <!-- GOV.UK Blue Bar -->
+  <div class="govuk-blue-bar"></div>
+
+  <!-- Modal Content -->
+  <main class="bg-white px-6 py-6">
+    <h2 class="text-2xl font-bold mb-4">Add Task</h2>
+
+    <form>
+      <!-- Case Number -->
+      <div class="mb-4">
+        <label class="block font-semibold mb-1">Case Number</label>
+        <input type="text" class="w-full border px-3 py-2 rounded" placeholder="e.g. 3245">
+      </div>
+
+      <!-- Title -->
+      <div class="mb-4">
+        <label class="block font-semibold mb-1">Title</label>
+        <input type="text" class="w-full border px-3 py-2 rounded" placeholder="Task title">
+      </div>
+
+      <!-- Description -->
+      <div class="mb-4">
+        <label class="block font-semibold mb-1">Description</label>
+        <textarea class="w-full border px-3 py-2 rounded" rows="3" placeholder="Add a brief description..."></textarea>
+      </div>
+
+      <!-- Status -->
+      <div class="mb-4">
+        <label class="block font-semibold mb-1">Status</label>
+        <select class="w-full border px-3 py-2 rounded">
+          <option>Pending</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+        </select>
+      </div>
+
+      <!-- Due Date -->
+      <div class="mb-4">
+        <label class="block font-semibold mb-1">Due Date</label>
+        <input type="date" class="w-full border px-3 py-2 rounded">
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end mt-6 gap-3">
+        <button type="button" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Cancel</button>
+        <button type="submit" class="bg-green-700 text-white font-semibold px-4 py-2 rounded hover:bg-green-800">Save</button>
+      </div>
+    </form>
+  </main>
+</div>
+
+</body>
+</html>

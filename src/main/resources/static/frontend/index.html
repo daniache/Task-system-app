@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Task Manager Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'GDS Transport', Arial, sans-serif;
+        }
+        .govuk-blue-bar {
+            background: #1d70b8;
+            height: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Header -->
+<header class="bg-[#0b0c0c] text-white px-6 py-4">
+    <div class="govuk-width-container flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <img src="logo.png" alt="Logo" class="w-10 h-10" />
+            <span class="text-xl font-bold">Task Manager</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <input type="text" placeholder="Search..." class="px-3 py-1 rounded border border-gray-300 text-black" />
+        </div>
+    </div>
+</header>
+
+<!-- GOV.UK Blue Bar -->
+<div class="govuk-blue-bar"></div>
+
+<!-- Main Content -->
+<main class="p-6 max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Manage Tasks</h1>
+        <div class="flex justify-end">
+            <label class="mr-2 font-medium">Sort by:</label>
+            <select id="sortBy" class="border rounded-md px-3 py-1 bg-white">
+                <option value="title-asc">Title (A-Z)</option>
+                <option value="title-desc">Title (Z-A)</option>
+                <option value="due-asc">Due Date ↑</option>
+                <option value="due-desc">Due Date ↓</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Task Container -->
+    <div id="taskContainer"></div>
+</main>
+
+<!-- Footer -->
+<footer id="footer" class="fixed bottom-0 left-0 w-full z-50">
+    <div class="bg-[#dee0e2] text-#171819 text-sm text-right py-4 px-6">
+        <div class="govuk-width-container footer-meta">
+            <p class="text-sm">&copy; 2025 Task Manager. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+    async function fetchAndRenderTasks() {
+        try {
+            const response = await fetch('/tasks');
+            const tasks = await response.json();
+            const container = document.getElementById('taskContainer');
+
+            container.innerHTML = ''; // clear previous entries
+
+            tasks.forEach(task => {
+                const taskCard = `
+          <div class="bg-white shadow-md p-4 rounded-lg border mb-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-lg font-semibold">${task.title}</h3>
+                <p class="text-sm text-gray-500">Case #${task.caseNumber} - Due: ${new Date(task.dueDateTime).toLocaleDateString()}</p>
+                <p class="text-sm mt-1">Description: ${task.description}</p>
+                <div class="mt-3 flex gap-2 items-center flex-wrap">
+                  <label class="text-sm font-medium">Priority:</label>
+                  <select class="text-sm bg-gray-100 text-gray-700 px-2 py-1 rounded" onchange="updatePriority(this)">
+                    <option ${task.priority === 'High' ? 'selected' : ''}>High</option>
+                    <option ${task.priority === 'Medium' ? 'selected' : ''}>Medium</option>
+                    <option ${task.priority === 'Low' ? 'selected' : ''}>Low</option>
+                  </select>
+                  <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm">${task.status}</span>
+                </div>
+              </div>
+              <div class="flex gap-3 mt-10 text-lg text-gray-600">
+                <button title="View"><i class="fas fa-eye hover:text-blue-600"></i></button>
+                <button title="Edit"><i class="fas fa-edit hover:text-green-600"></i></button>
+                <button title="Delete"><i class="fas fa-trash hover:text-red-600"></i></button>
+              </div>
+            </div>
+          </div>
+        `;
+                container.insertAdjacentHTML('beforeend', taskCard);
+            });
+        } catch (err) {
+            console.error('Error loading tasks:', err);
+        }
+    }
+
+    function updatePriority(selectEl) {
+        const value = selectEl.value;
+        selectEl.className = 'text-sm px-2 py-1 rounded';
+        if (value === 'High') {
+            selectEl.classList.add('bg-red-100', 'text-red-700');
+        } else if (value === 'Medium') {
+            selectEl.classList.add('bg-orange-100', 'text-orange-700');
+        } else {
+            selectEl.classList.add('bg-green-100', 'text-green-700');
+        }
+    }
+
+    // Fetch tasks on page load
+    document.addEventListener('DOMContentLoaded', fetchAndRenderTasks);
+</script>
+
+</body>
+</html>
