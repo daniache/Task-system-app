@@ -24,6 +24,7 @@ public class TaskService {
     }
 
     public Task createTask (Task tasks){
+        log.info("Adding Task");
         return taskSyRepo.save(tasks);
     }
 

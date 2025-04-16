@@ -1,6 +1,5 @@
 package com.technical_test.task_management_sy.models;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,7 +17,7 @@ import java.time.LocalDateTime;
 @Table(name = "tasks")
 @NoArgsConstructor
 @AllArgsConstructor
-@JacksonXmlRootElement(localName = "Task")
+
 
 public class Task {
 

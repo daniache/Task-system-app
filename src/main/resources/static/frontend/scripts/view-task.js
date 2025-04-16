@@ -1,18 +1,14 @@
 $(document).ready(function () {
     // Load view-task modal HTML on page load
     $('#view-modal-container').load('/frontend/view-task.html?v=' + Date.now(), function () {
-        // Optional: Initialize Flowbite after modal is loaded
-        if (typeof initFlowbite === 'function') {
-            initFlowbite();
-        }
-    });
+        if (typeof initFlowbite === 'function') initFlowbite();
 
-    // Delegate click events for dynamically created view icons
-    $('#taskContainer').on('click', '.view-task-btn', function () {
-        const taskId = $(this).data('task-id');
-        openViewModal(taskId);
+        // Delegate click events for dynamically created view icons
+        $('#taskContainer').on('click', '.view-task-btn', function () {
+            const taskId = $(this).data('task-id');
+            openViewModal(taskId);
+        });
     });
-});
 
 // Function to load task details and show the modal
 function openViewModal(taskId) {
@@ -29,5 +25,6 @@ function openViewModal(taskId) {
 }
     $(document).on('click', '[data-modal-hide="view-task-modal"]', function () {
     $('#view-task-modal').addClass('hidden').removeClass('flex');
+});
 });
 

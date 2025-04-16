@@ -21,12 +21,12 @@
         </div>
         <div class="flex items-center gap-4 relative">
             <!-- Search bar -->
-            <input type="text" placeholder="Search..." class="px-3 py-1 rounded border border-gray-300 text-black" />
+            <input type="text" id="searchInput" placeholder="Search..." class="px-3 py-1 rounded border border-gray-300 text-black" />
 
             <!-- Menu dropdown -->
             <div class="relative">
-                <button onclick="toggleMenuDropdown()" class="text-white bg-[#1d70b8] hover:bg-blue-800 font-medium rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center">
-                    Menu
+                <button onclick="toggleMenuDropdown()" class="text-white bg-[#1d70b8] hover:bg-blue-800 font-medium
+                rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center"> Menu
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1l4 4 4-4"/>
                     </svg>
@@ -35,9 +35,7 @@
                 <!-- Dropdown content -->
                 <div id="menuDropdown" class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg hidden z-50">
                     <ul class="py-2 text-sm">
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Completed Task</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Add New Task</a></li>
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
+                        <li><a href="/frontend/completed-tasks.html" class="block px-4 py-2 hover:bg-gray-100">Completed Task</a></li>
                         <li><hr class="my-1 border-gray-200"></li>
                         <li><a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a></li>
                     </ul>
@@ -52,7 +50,7 @@
 <div class="govuk-blue-bar"></div>
 
 <!-- Main Content -->
-<main class="p-7 max-w-7xl mx-auto">
+<main class="p-7 max-w-5xl mx-auto">
     <div class="flex justify-between items-center mb-5">
         <h1 class="text-2xl font-bold">Manage Tasks</h1>
         <div class="flex justify-end">
@@ -61,7 +59,8 @@
                     data-modal-target="add-task-modal"
                     data-modal-toggle="add-task-modal"
                     type="button"
-                    class="text-white bg-[#1d70b8] hover:bg-[#155a99] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-6 h-6 flex items-center justify-center mr-2"
+                    class="text-white bg-[#1d70b8] hover:bg-[#155a99] focus:ring-4 focus:outline-none
+                    focus:ring-blue-300 font-medium rounded-md text-sm w-6 h-6 flex items-center justify-center mr-2"
             >
                 <i class="fa-solid fa-plus"></i>
             </button>
@@ -82,9 +81,9 @@
 
 <!-- Footer -->
 <footer id="footer" class="fixed bottom-0 left-0 w-full z-50">
-    <div class="bg-[#dee0e2] text-#171819 text-sm text-right py-4 px-6">
+    <div class="bg-[#dee0e2] text-#171819 text-sm text-center py-4 px-6">
         <div class="govuk-width-container footer-meta">
-            <p class="text-sm">&copy; 2025 Task Manager. All rights reserved.</p>
+            <p class="text-sm">&copy; 2025 Task Management System. All rights reserved.</p>
         </div>
     </div>
 </footer>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Completed Tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/frontend/styles.css" />
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Header -->
+<header class="bg-[#0b0c0c] text-white px-6 py-4">
+    <div class="govuk-width-container flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <img src="logo-mj.png" alt="Logo" class="w-15.5 h-10" />
+            <span class="text-xl font-bold">Completed Tasks</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="/frontend/index.html" class="text-white hover:underline">← Back to Dashboard</a>
+        </div>
+    </div>
+</header>
+
+<!-- GOV.UK Blue Bar -->
+<div class="govuk-blue-bar" style="background: #1d70b8; height: 10px;"></div>
+
+<!-- Main Content -->
+<main class="p-7 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold mb-6">Completed Tasks</h1>
+    <div id="completedTasksContainer" class="space-y-4"></div>
+</main>
+
+<!-- Footer -->
+<footer id="footer" class="fixed bottom-0 left-0 w-full z-50">
+    <div class="bg-[#dee0e2] text-#171819 text-sm text-right py-4 px-6">
+        <div class="govuk-width-container footer-meta">
+            <p class="text-sm">&copy; 2025 Task Manager. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/frontend/scripts/completed-tasks.js"></script>
+</body>
+</html>
