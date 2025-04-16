@@ -1,106 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Edit Task</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'GDS Transport', Arial, sans-serif;
-        }
-        .govuk-blue-bar {
-            background: #1d70b8;
-            height: 10px;
-            width: 100%;
-        }
-        .tab-toggle input:checked + label {
-            background-color: #0b0c0c;
-            color: white;
-        }
-    </style>
-</head>
-<body class="bg-white text-gray-800">
-<div class="max-w-lg mx-auto mt-10 shadow border border-gray-300 rounded-lg overflow-hidden">
-    <header class="bg-[#0b0c0c] text-white px-6 py-4">
-        <h1 class="text-xl font-bold">EDIT TASK</h1>
-    </header>
-    <div class="govuk-blue-bar"></div>
+<!-- EDIT TASK MODAL -->
+<div id="edit-task-modal" tabindex="-1" aria-hidden="true"
+     class="hidden fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center items-center">
+    <div class="relative w-full max-w-lg">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 border border-gray-300 overflow-hidden">
 
-    <main class="bg-white px-6 py-6">
-        <h2 class="text-2xl font-bold mb-4">Edit Task</h2>
+            <!-- Header -->
+            <div class="bg-[#0b0c0c] text-white px-6 py-4 rounded-t-lg">
+                <h2 class="text-xl font-bold">EDIT TASK</h2>
+            </div>
 
-        <!-- Toggle -->
-        <div class="tab-toggle flex border border-gray-300 rounded overflow-hidden mb-6 w-full">
-            <input type="radio" id="editAll" name="editMode" value="all" class="hidden peer/editAll" checked>
-            <label for="editAll" class="flex-1 py-2 text-center font-medium cursor-pointer peer-checked/editAll:bg-[#0b0c0c] peer-checked/editAll:text-white">Edit All</label>
+            <!-- GOV.UK Blue Bar -->
+            <div class="govuk-blue-bar"></div>
 
-            <input type="radio" id="editStatus" name="editMode" value="status" class="hidden peer/editStatus">
-            <label for="editStatus" class="flex-1 py-2 text-center font-medium cursor-pointer peer-checked/editStatus:bg-[#0b0c0c] peer-checked/editStatus:text-white">Edit Status Only</label>
+            <!-- Modal Body -->
+            <form id="editTaskForm" class="p-6 space-y-4">
+                <!-- Toggle -->
+                <div class="tab-toggle flex border border-gray-300 rounded overflow-hidden mb-4 w-full">
+                    <input type="radio" id="editAll" name="editMode" value="all" class="hidden peer/editAll" checked>
+                    <label for="editAll"
+                           class="flex-1 py-2 text-center font-medium cursor-pointer peer-checked/editAll:bg-[#0b0c0c] peer-checked/editAll:text-white">
+                        Edit All
+                    </label>
+
+                    <input type="radio" id="editStatus" name="editMode" value="status" class="hidden peer/editStatus">
+                    <label for="editStatus"
+                           class="flex-1 py-2 text-center font-medium cursor-pointer peer-checked/editStatus:bg-[#0b0c0c] peer-checked/editStatus:text-white">
+                        Edit Status Only
+                    </label>
+                </div>
+
+                <div class="all-field">
+                    <label for="edit-caseNumber" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Case Number</label>
+                    <input type="text" id="edit-caseNumber" name="caseNumber" class="w-full border px-3 py-2 rounded" required>
+                </div>
+
+                <div class="all-field">
+                    <label for="edit-title" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Title</label>
+                    <input type="text" id="edit-title" name="title" class="w-full border px-3 py-2 rounded" required>
+                </div>
+
+                <div class="all-field">
+                    <label for="edit-description" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Description</label>
+                    <textarea id="edit-description" name="description" rows="3" class="w-full border px-3 py-2 rounded" required></textarea>
+                </div>
+
+                <div>
+                    <label for="edit-status" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Status</label>
+                    <select id="edit-status" name="status" class="w-full border px-3 py-2 rounded" required>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                        <option value="On-Hold">On-Hold</option>
+                    </select>
+                </div>
+
+                <div class="all-field">
+                    <label for="edit-dueDate" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Due Date</label>
+                    <input type="date" id="edit-dueDate" name="dueDate" class="w-full border px-3 py-2 rounded" required>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" data-modal-hide="edit-task-modal"
+                            class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Cancel</button>
+                    <button type="submit"
+                            class="bg-green-700 text-white font-semibold px-4 py-2 rounded hover:bg-green-800">Save</button>
+                </div>
+            </form>
         </div>
-
-        <!-- Edit Form -->
-        <form>
-            <!-- Case Number -->
-            <div class="mb-4 all-field">
-                <label class="block font-semibold mb-1">Case Number</label>
-                <input type="text" class="w-full border px-3 py-2 rounded" value="3245">
-            </div>
-
-            <!-- Title -->
-            <div class="mb-4 all-field">
-                <label class="block font-semibold mb-1">Title</label>
-                <input type="text" class="w-full border px-3 py-2 rounded" value="Install Figma on Server">
-            </div>
-
-            <!-- Description -->
-            <div class="mb-4 all-field">
-                <label class="block font-semibold mb-1">Description</label>
-                <textarea class="w-full border px-3 py-2 rounded" rows="3">Please install latest version</textarea>
-            </div>
-
-            <!-- Status -->
-            <div class="mb-4">
-                <label class="block font-semibold mb-1">Status</label>
-                <select class="w-full border px-3 py-2 rounded">
-                    <option>Pending</option>
-                    <option selected>In Progress</option>
-                    <option>Completed</option>
-                </select>
-            </div>
-
-            <!-- Due Date -->
-            <div class="mb-4 all-field">
-                <label class="block font-semibold mb-1">Due Date</label>
-                <input type="date" class="w-full border px-3 py-2 rounded" value="2024-05-24">
-            </div>
-
-            <div class="mt-6">
-                <button type="submit" class="w-full bg-green-700 text-white font-semibold px-4 py-2 rounded hover:bg-green-800">Save</button>
-            </div>
-        </form>
-    </main>
+    </div>
 </div>
 
-<!-- Toggle logic -->
-<script>
-    const allFields = document.querySelectorAll('.all-field');
-    const editAllRadio = document.getElementById('editAll');
-    const editStatusRadio = document.getElementById('editStatus');
 
-    function toggleFields() {
-        const showAll = editAllRadio.checked;
-        allFields.forEach(field => {
-            field.style.display = showAll ? 'block' : 'none';
-        });
-    }
-
-    editAllRadio.addEventListener('change', toggleFields);
-    editStatusRadio.addEventListener('change', toggleFields);
-
-    // Init
-    toggleFields();
-</script>
-</body>
-</html>

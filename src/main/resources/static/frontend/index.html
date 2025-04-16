@@ -7,29 +7,44 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <style>
-        body {
-            font-family: 'GDS Transport', Arial, sans-serif;
-        }
-        .govuk-blue-bar {
-            background: #1d70b8;
-            height: 10px;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="/frontend/styles.css" />
 </head>
+
 <body class="bg-white text-gray-800">
 
 <!-- Header -->
 <header class="bg-[#0b0c0c] text-white px-6 py-4">
     <div class="govuk-width-container flex justify-between items-center">
         <div class="flex items-center gap-4">
-            <img src="logo.png" alt="Logo" class="w-10 h-10" />
+            <img src="logo-mj.png" alt="Logo" class="w-15.5 h-10" />
             <span class="text-xl font-bold">Task Manager</span>
         </div>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 relative">
+            <!-- Search bar -->
             <input type="text" placeholder="Search..." class="px-3 py-1 rounded border border-gray-300 text-black" />
+
+            <!-- Menu dropdown -->
+            <div class="relative">
+                <button onclick="toggleMenuDropdown()" class="text-white bg-[#1d70b8] hover:bg-blue-800 font-medium rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center">
+                    Menu
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1l4 4 4-4"/>
+                    </svg>
+                </button>
+
+                <!-- Dropdown content -->
+                <div id="menuDropdown" class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg hidden z-50">
+                    <ul class="py-2 text-sm">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Completed Task</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Add New Task</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
+                        <li><hr class="my-1 border-gray-200"></li>
+                        <li><a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
     </div>
 </header>
 
@@ -37,10 +52,20 @@
 <div class="govuk-blue-bar"></div>
 
 <!-- Main Content -->
-<main class="p-6 max-w-7xl mx-auto">
-    <div class="flex justify-between items-center mb-6">
+<main class="p-7 max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-5">
         <h1 class="text-2xl font-bold">Manage Tasks</h1>
         <div class="flex justify-end">
+
+            <button
+                    data-modal-target="add-task-modal"
+                    data-modal-toggle="add-task-modal"
+                    type="button"
+                    class="text-white bg-[#1d70b8] hover:bg-[#155a99] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-6 h-6 flex items-center justify-center mr-2"
+            >
+                <i class="fa-solid fa-plus"></i>
+            </button>
+
             <label class="mr-2 font-medium">Sort by:</label>
             <select id="sortBy" class="border rounded-md px-3 py-1 bg-white">
                 <option value="title-asc">Title (A-Z)</option>
@@ -64,64 +89,21 @@
     </div>
 </footer>
 
-<!-- JavaScript -->
-<script>
-    async function fetchAndRenderTasks() {
-        try {
-            const response = await fetch('/tasks');
-            const tasks = await response.json();
-            const container = document.getElementById('taskContainer');
+<!-- Modal container (for injected modal HTML) -->
+<div id="modal-container"></div>
+<!-- Placeholder for dynamic modals -->
+<div id="view-modal-container"></div>
+<div id="edit-modal-container"></div>
+<div id="delete-modal-container"></div>
 
-            container.innerHTML = ''; // clear previous entries
 
-            tasks.forEach(task => {
-                const taskCard = `
-          <div class="bg-white shadow-md p-4 rounded-lg border mb-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-lg font-semibold">${task.title}</h3>
-                <p class="text-sm text-gray-500">Case #${task.caseNumber} - Due: ${new Date(task.dueDateTime).toLocaleDateString()}</p>
-                <p class="text-sm mt-1">Description: ${task.description}</p>
-                <div class="mt-3 flex gap-2 items-center flex-wrap">
-                  <label class="text-sm font-medium">Priority:</label>
-                  <select class="text-sm bg-gray-100 text-gray-700 px-2 py-1 rounded" onchange="updatePriority(this)">
-                    <option ${task.priority === 'High' ? 'selected' : ''}>High</option>
-                    <option ${task.priority === 'Medium' ? 'selected' : ''}>Medium</option>
-                    <option ${task.priority === 'Low' ? 'selected' : ''}>Low</option>
-                  </select>
-                  <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm">${task.status}</span>
-                </div>
-              </div>
-              <div class="flex gap-3 mt-10 text-lg text-gray-600">
-                <button title="View"><i class="fas fa-eye hover:text-blue-600"></i></button>
-                <button title="Edit"><i class="fas fa-edit hover:text-green-600"></i></button>
-                <button title="Delete"><i class="fas fa-trash hover:text-red-600"></i></button>
-              </div>
-            </div>
-          </div>
-        `;
-                container.insertAdjacentHTML('beforeend', taskCard);
-            });
-        } catch (err) {
-            console.error('Error loading tasks:', err);
-        }
-    }
-
-    function updatePriority(selectEl) {
-        const value = selectEl.value;
-        selectEl.className = 'text-sm px-2 py-1 rounded';
-        if (value === 'High') {
-            selectEl.classList.add('bg-red-100', 'text-red-700');
-        } else if (value === 'Medium') {
-            selectEl.classList.add('bg-orange-100', 'text-orange-700');
-        } else {
-            selectEl.classList.add('bg-green-100', 'text-green-700');
-        }
-    }
-
-    // Fetch tasks on page load
-    document.addEventListener('DOMContentLoaded', fetchAndRenderTasks);
-</script>
-
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script src="/frontend/scripts/index.js"></script>
+<script src="/frontend/scripts/view-task.js"></script>
+<script src="/frontend/scripts/edit-task.js"></script>
+<script src="/frontend/scripts/add-task.js"></script>
+<script src="/frontend/scripts/del-task.js"></script>
 </body>
 </html>

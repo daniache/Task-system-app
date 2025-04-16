@@ -1,0 +1,8 @@
+body {
+    font-family: 'GDS Transport', Arial, sans-serif;
+}
+.govuk-blue-bar {
+    background: #1d70b8;
+    height: 10px;
+    width: 100%;
+}
