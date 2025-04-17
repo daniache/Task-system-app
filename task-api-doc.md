@@ -22,15 +22,15 @@ This API is currently in the **live** phase.
 
 ### Benefits
 
-- Lightweight and RESTful
-- Easily integratable in frontend apps
-- Minimal setup required
+- Lightweight and RESTful  
+- Easily integratable in frontend apps  
+- Minimal setup required  
 
 ### Technical prerequisites
 
-- Java 17+ and Spring Boot
-- JSON parsing support on client side
-- No authentication required
+- Java 21+ and Spring Boot  
+- JSON parsing support on client side  
+- No authentication required  
 
 ### Access
 
@@ -69,6 +69,7 @@ Accept: application/json
 ### Request/Response Format
 
 - All requests and responses use **JSON**.
+- Date/time fields use **ISO 8601** format.
 
 ### Example: Create a Task
 
@@ -100,7 +101,7 @@ Content-Type: application/json
 
 ---
 
-## Common Tasks
+## Endpoints
 
 ### Create a task
 
@@ -141,6 +142,8 @@ Content-Type: application/json
 
 ## Task Schema
 
+### Example
+
 ```json
 {
   "id": 1,
@@ -152,22 +155,28 @@ Content-Type: application/json
 }
 ```
 
-Fields:
-- `id` (Long): Auto-generated ID
-- `caseNumber` (String): Unique case identifier (optional)
-- `title` (String): Required task title
-- `description` (String): Optional
-- `status` (String): Required status (e.g., Pending, Completed)
-- `dueDateTime` (DateTime): Required due date
+### Fields
+
+- `id` (Long): Auto-generated ID  
+- `caseNumber` (String): Unique case identifier (optional)  
+- `title` (String): Required task title  
+- `description` (String): Optional  
+- `status` (String): Required status (e.g., Pending, Completed)  
+- `dueDateTime` (DateTime): Required due date  
 
 ---
 
 ## Testing the API
 
 You can test using:
+
 - Postman / Insomnia (manual testing)
 - CURL
 - JavaScript `fetch()` or `axios` calls
+- Swagger UI at:  
+  ```
+  http://localhost:8080/swagger-ui/index.html
+  ```
 
 The API has no sandbox or environment distinction. All requests affect the real database.
 
