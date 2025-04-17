@@ -6,31 +6,21 @@ A web-based application that allows users to create, view, update, and delete ta
  ### 🌐 TECHNOLOGIES USED
 
     Frontend: HTML5, Tailwind CSS, Vanilla JavaScript, jQuery
-
     Backend: Java, Spring Boot 3.3.4, Spring MVC, Spring Validation
-
     Database: PostgreSQL
-
     API Testing: Postman
-
     Deployment: Localhost (can be extended to cloud deployment)
 
 
 ### ✅ FUNCTIONALITIES
 
-    Add new tasks with case number, title, description, status, and due date
-
-    View all active tasks with filtering and sorting
-
-    Edit entire task or update only its status
-
-    Delete tasks
-
-    View completed tasks separately
-
-    Search and sort functionality for quick task access
-
-    RESTful API endpoints with OpenAPI documentation
+    - Add new tasks with case number, title, description, status, and due date
+    - View all active tasks with filtering and sorting
+    - Edit entire task or update only its status
+    - Delete tasks
+    - View completed tasks separately
+    - Search and sort functionality for quick task access
+    - RESTful API endpoints with OpenAPI documentation
 
 
 ## 🔗 HOW TO INVOKE THE APPLICATION
@@ -47,11 +37,9 @@ A web-based application that allows users to create, view, update, and delete ta
 
 🧱 Setup
 
-    Clone the repository.
-
-    Update application.properties with your DB credentials.
-
-    Run the Spring Boot application via your IDE or terminal:
+    1. Clone the repository.
+    2. Update application.properties with your DB credentials.
+    3. Run the Spring Boot application via your IDE or terminal:
 
 mvn spring-boot:run
 
