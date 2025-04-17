@@ -5,11 +5,11 @@ A web-based application that allows users to create, view, update, and delete ta
 
  ### 🌐 TECHNOLOGIES USED
 
-    Frontend: HTML5, Tailwind CSS, Vanilla JavaScript, jQuery
-    Backend: Java, Spring Boot 3.3.4, Spring MVC, Spring Validation
-    Database: PostgreSQL
-    API Testing: Postman
-    Deployment: Localhost (can be extended to cloud deployment)
+    - Frontend: HTML5, Tailwind CSS, Vanilla JavaScript, jQuery
+    - Backend: Java, Spring Boot 3.3.4, Spring MVC, Spring Validation
+    - Database: PostgreSQL
+    - API Testing: Postman
+    - Deployment: Localhost (can be extended to cloud deployment)
 
 
 ### ✅ FUNCTIONALITIES
@@ -27,12 +27,9 @@ A web-based application that allows users to create, view, update, and delete ta
 
 **⚙️ Prerequisites**
 
-    Java 21 +
-
+    Java 21+
     Maven
-
-    Postgresql 16 + (with a database and appropriate credentials configured)
-
+    Postgresql 16+ (with a database and appropriate credentials configured)
     Any web browser
 
 🧱 Setup
@@ -104,9 +101,9 @@ You can test the API using Postman or cURL.
 
 ### ✨ FEATURES TO EXPAND
 
-    User authentication and authorisation
-
-    Cloud deployment (e.g. Heroku or AWS)
+    - User authentication and authorisation
+    - Cloud deployment (e.g. Heroku or AWS)
+    - Priority Status Implementation
 
     
 
