@@ -5,7 +5,7 @@ A web-based application that allows users to create, view, update, and delete ta
 
  ### 🌐 TECHNOLOGIES USED
 
-    - Frontend: HTML5, Tailwind CSS, Vanilla JavaScript, jQuery
+    - Frontend: HTML5, Tailwind CSS, Vanilla JavaScript, jQuery, Flowbite Modal Components, Font Awesome Icons
     - Backend: Java, Spring Boot 3.3.4, Spring MVC, Spring Validation
     - Database: PostgreSQL
     - API Testing: Postman
@@ -20,7 +20,7 @@ A web-based application that allows users to create, view, update, and delete ta
     - Delete tasks
     - View completed tasks separately
     - Search and sort functionality for quick task access
-    - RESTful API endpoints with OpenAPI documentation
+    - RESTful API endpoints with API documentation
 
 
 ## 🔗 HOW TO INVOKE THE APPLICATION
@@ -31,6 +31,7 @@ A web-based application that allows users to create, view, update, and delete ta
     Maven
     Postgresql 16+ (with a database and appropriate credentials configured)
     Any web browser
+    Git
 
 🧱 Setup
 
