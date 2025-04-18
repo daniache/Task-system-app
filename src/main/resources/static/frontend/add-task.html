@@ -1,63 +1,72 @@
 <!-- Modal -->
 <div id="add-task-modal" tabindex="-1" aria-hidden="true"
      class="hidden fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center items-center">
-  <div class="relative w-full max-w-lg">
-    <!-- Modal content -->
-    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 border border-gray-300 overflow-hidden">
+    <div class="relative w-full max-w-lg">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 border border-gray-300 overflow-hidden">
 
-      <!-- Custom Header inside modal (to preserve border radius) -->
-      <div class="bg-[#0b0c0c] text-white px-6 py-4 rounded-t-lg">
-        <h2 class="text-xl font-bold">ADD NEW TASK</h2>
-      </div>
+            <!-- Custom Header inside modal (to preserve border radius) -->
+            <div class="bg-[#0b0c0c] text-white px-6 py-4 rounded-t-lg">
+                <h2 class="text-xl font-bold">ADD NEW TASK</h2>
+            </div>
 
-      <!-- GOV.UK Blue Bar (placed below header for full roundness) -->
-      <div class="govuk-blue-bar"></div>
+            <!-- GOV.UK Blue Bar  -->
+            <div class="govuk-blue-bar"></div>
 
-      <!-- Modal body -->
-      <form id="addTaskForm" class="p-6 space-y-4">
+            <!-- Modal body -->
+            <form id="addTaskForm" class="p-6 space-y-4">
 
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Add Task</h3>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Add Task</h3>
 
-        <div>
-          <label for="caseNumber" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Case Number</label>
-          <input type="text" id="caseNumber" class="w-full border px-3 py-2 rounded" placeholder="e.g. 3245" required>
+                <div>
+                    <label for="caseNumber" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Case
+                        Number</label>
+                    <input type="text" id="caseNumber" class="w-full border px-3 py-2 rounded" placeholder="e.g. 3245"
+                           required>
+                </div>
+
+                <div>
+                    <label for="title"
+                           class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Title</label>
+                    <input type="text" id="title" class="w-full border px-3 py-2 rounded" placeholder="Task title"
+                           required>
+                </div>
+
+                <div>
+                    <label for="description" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Description</label>
+                    <textarea id="description" rows="3" class="w-full border px-3 py-2 rounded"
+                              placeholder="Add a brief description..." required></textarea>
+                </div>
+
+                <div>
+                    <label for="status"
+                           class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Status</label>
+                    <select id="status" class="w-full border px-3 py-2 rounded" required>
+                        <option>Pending</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                        <option>On-Hold</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="dueDate" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Due
+                        Date</label>
+                    <input type="date" id="dueDate" class="w-full border px-3 py-2 rounded" required>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" data-modal-hide="add-task-modal"
+                            class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Cancel
+                    </button>
+                    <button type="submit"
+                            class="bg-green-700 text-white font-semibold px-4 py-2 rounded hover:bg-green-800">Save
+                    </button>
+                </div>
+            </form>
+
         </div>
-
-        <div>
-          <label for="title" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Title</label>
-          <input type="text" id="title" class="w-full border px-3 py-2 rounded" placeholder="Task title" required>
-        </div>
-
-        <div>
-          <label for="description" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Description</label>
-          <textarea id="description" rows="3" class="w-full border px-3 py-2 rounded" placeholder="Add a brief description..." required></textarea>
-        </div>
-
-        <div>
-          <label for="status" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Status</label>
-          <select id="status" class="w-full border px-3 py-2 rounded" required>
-            <option>Pending</option>
-            <option>In Progress</option>
-            <option>Completed</option>
-            <option>On-Hold</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="dueDate" class="block text-sm font-semibold mb-1 text-gray-900 dark:text-white">Due Date</label>
-          <input type="date" id="dueDate" class="w-full border px-3 py-2 rounded" required>
-        </div>
-
-        <!-- Buttons -->
-        <div class="flex justify-end gap-3 pt-2">
-          <button type="button" data-modal-hide="add-task-modal"
-                  class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Cancel</button>
-          <button type="submit"
-                  class="bg-green-700 text-white font-semibold px-4 py-2 rounded hover:bg-green-800">Save</button>
-        </div>
-      </form>
-
     </div>
-  </div>
 </div>
 

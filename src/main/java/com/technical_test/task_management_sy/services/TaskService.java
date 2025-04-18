@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class TaskService {
 
+    private final TaskSyRepo taskSyRepo;
+
+    // Constructor injection
     @Autowired
-    private TaskSyRepo taskSyRepo;
+    public TaskService (TaskSyRepo taskSyRepo) {this.taskSyRepo = taskSyRepo; }
 
     public List<Task> getAllTasks() {
         log.info("Fetching all tasks");

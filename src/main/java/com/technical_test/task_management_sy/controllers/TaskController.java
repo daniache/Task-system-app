@@ -21,8 +21,12 @@ import java.util.Map;
 @RequestMapping("/tasks")
 public class TaskController {
 
+    private final TaskService taskService;
+
     @Autowired
-    private TaskService taskService;
+    public TaskController(TaskService taskService){
+        this.taskService = taskService;
+    }
 
     @Operation(summary = "Get all tasks")
     @ApiResponse(responseCode = "200", description = "List of tasks",

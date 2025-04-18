@@ -12,7 +12,7 @@ $(document).ready(function () {
                 title: $('#title').val(),
                 description: $('#description').val(),
                 status: $('#status').val(),
-                dueDateTime: $('#dueDate').val() + "T00:00:00" // assuming date only
+                dueDateTime: $('#dueDate').val() + "T00:00:00"
             };
 
             $.ajax({

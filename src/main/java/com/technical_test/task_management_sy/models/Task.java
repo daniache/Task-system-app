@@ -28,7 +28,7 @@ public class Task {
     @Column(nullable = true, unique = true)
     private String caseNumber;
 
-    @NotBlank (message = "Title is required")
+    @NotBlank(message = "Title is required")
     @Column(nullable = false)
     private String title;
 

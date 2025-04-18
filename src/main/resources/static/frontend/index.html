@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Task Manager Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="/frontend/styles.css" />
+    <link href="https://fonts.cdnfonts.com/css/gds-transport" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/frontend/styles.css"/>
 </head>
 
 <body class="bg-white text-gray-800">
@@ -16,28 +16,37 @@
 <header class="bg-[#0b0c0c] text-white px-6 py-4">
     <div class="govuk-width-container flex justify-between items-center">
         <div class="flex items-center gap-4">
-            <img src="logo-mj.png" alt="Logo" class="w-15.5 h-10" />
+            <img src="logo-mj.png" alt="Logo" class="w-15.5 h-10"/>
             <span class="text-xl font-bold">Task Manager</span>
         </div>
         <div class="flex items-center gap-4 relative">
             <!-- Search bar -->
-            <input type="text" id="searchInput" placeholder="Search..." class="px-3 py-1 rounded border border-gray-300 text-black" />
+            <label for="searchInput"></label>
+            <input type="text" id="searchInput" placeholder="Search..."
+                                                    class="px-3 py-1 rounded border border-gray-300 text-black"/>
 
             <!-- Menu dropdown -->
             <div class="relative">
                 <button onclick="toggleMenuDropdown()" class="text-white bg-[#1d70b8] hover:bg-blue-800 font-medium
                 rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center"> Menu
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1l4 4 4-4"/>
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M1 1l4 4 4-4"/>
                     </svg>
                 </button>
 
                 <!-- Dropdown content -->
-                <div id="menuDropdown" class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg hidden z-50">
+                <div id="menuDropdown"
+                     class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg hidden z-50">
                     <ul class="py-2 text-sm">
-                        <li><a href="/frontend/completed-tasks.html" class="block px-4 py-2 hover:bg-gray-100">Completed Tasks</a></li>
-                        <li><hr class="my-1 border-gray-200"></li>
-                        <li><a href="/frontend/home.html" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a></li>
+                        <li><a href="/frontend/completed-tasks.html" class="block px-4 py-2 hover:bg-gray-100">Completed
+                            Tasks</a></li>
+                        <li>
+                            <hr class="my-1 border-gray-200">
+                        </li>
+                        <li><a href="/frontend/home.html"
+                               class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -88,9 +97,8 @@
     </div>
 </footer>
 
-<!-- Modal container (for injected modal HTML) -->
+<!-- Modal containers -->
 <div id="modal-container"></div>
-<!-- Placeholder for dynamic modals -->
 <div id="view-modal-container"></div>
 <div id="edit-modal-container"></div>
 <div id="delete-modal-container"></div>
