@@ -1,6 +1,6 @@
 # TASK MANAGEMENT SYSTEM
 
-A web-based application that allows users to create, view, update, and delete tasks. Designed with productivity and clarity in mind, it helps users manage workloads efficiently using a clean, GOV.UK-inspired interface.
+A web-based application that allows users to create, view, update, and delete tasks. Designed with productivity and clarity in mind, it helps users manage workloads efficiently using a clean interface.
 
 
  ### 🌐 TECHNOLOGIES USED
